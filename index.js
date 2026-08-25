@@ -31,4 +31,7 @@ app.post('/connect/:userId', async (req, res) => {
     await redis.del(`offline_queue:${req.params.userId}`);
     res.json({ pending: offlineMessages.map(JSON.parse) });
 });
-app.listen(3000);
+if (require.main === module) {
+    app.listen(3000, () => console.log('Chat API on port 3000'));
+}
+module.exports = { app, pool, redis };
