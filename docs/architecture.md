@@ -6,13 +6,13 @@ The following Mermaid.js sequence diagram maps the core workflow and interaction
 ```mermaid
 sequenceDiagram
     UserA->>WS: Send Msg
-WS->>Redis: XADD (Stream)
-Redis-)UserB: Notify via PubSub
+WS->>In-Memory LRU Cache / Node.js Maps: XADD (Stream)
+In-Memory LRU Cache / Node.js Maps-)UserB: Notify via PubSub
 UserB->>WS: Fetch Delta
 ```
 
 ## Component Breakdown
-- **Core Technology**: Node.js, Redis
+- **Core Technology**: Node.js, In-Memory LRU Cache / Node.js Maps
 - **Design Paradigm**: Emphasizes high availability, fault tolerance, and security.
 
 ## Security & Scaling Considerations
