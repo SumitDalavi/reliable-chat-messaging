@@ -1,3 +1,6 @@
+> **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
+
+
 # Reliable Chat Messaging 💬
 
 > Scalable chat platform guaranteeing message delivery and ordering using Redis Streams.
@@ -10,7 +13,7 @@ Standard messaging protocols lose messages when clients briefly disconnect, dest
 Guarantees ordered delivery by utilizing monotonic sequence IDs (seq_id) and explicit consumer offset tracking in SQLite. Simple CRUD applications fail when subjected to high throughput, race conditions, or massive data sets.
 
 ## The Solution
-This project implements a production-grade microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
+This project implements a robust microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
 
 ```text
 ┌──────────────┐      ┌───────────────┐      ┌───────────────┐
@@ -69,7 +72,7 @@ curl -X POST http://localhost:8080/api/trigger -H "Content-Type: application/jso
 [GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
 
 ---
-*Built with a focus on production-grade patterns, not toy demos.*
+*Built with a focus on robust patterns, not toy demos.*
 
 
 ---
@@ -96,6 +99,7 @@ npm run test
 ## 4. Constraints & Threat Model (Audit Added)
 
 ### Known Limitations
+- **Persistence**: Uses in-memory arrays for message persistence and delivery tracking.
 - **Single-Node Design:** This prototype uses embedded databases to simplify the infrastructure footprint for verification. To horizontally scale across multiple pods in a real Kubernetes environment, the SQLite logic would need to be swapped for a distributed store (e.g., PostgreSQL, Redis).
 - **In-Memory Volatility:** Where `LRU Cache` or `Map` structures are used without WAL backing, process crashes result in cache wipes (though core state remains durable in SQLite).
 
