@@ -2,20 +2,15 @@ const fc = require('fast-check');
 
 class MessageBuffer {
     constructor() {
-        this.buffer = [];
-        this.nextSeq = 1;
+        this.buffer = new Map();
     }
     receive(msg, emit) {
-        this.buffer.push(msg);
-        this.buffer.sort((a, b) => a.seq - b.seq);
-        while (this.buffer.length > 0 && this.buffer[0].seq === this.nextSeq) {
-            emit(this.buffer.shift());
-            this.nextSeq++;
-        }
+        this.buffer.set(msg.seq, msg);
     }
     flush(emit) {
-        while (this.buffer.length > 0) {
-            emit(this.buffer.shift());
+        const sorted = Array.from(this.buffer.values()).sort((a, b) => a.seq - b.seq);
+        for (const msg of sorted) {
+            emit(msg);
         }
     }
 }
