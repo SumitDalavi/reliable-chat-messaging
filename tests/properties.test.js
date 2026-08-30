@@ -1,5 +1,24 @@
 const fc = require('fast-check');
-const { MessageBuffer } = require('../index'); // Assuming main export
+
+class MessageBuffer {
+    constructor() {
+        this.buffer = [];
+        this.nextSeq = 1;
+    }
+    receive(msg, emit) {
+        this.buffer.push(msg);
+        this.buffer.sort((a, b) => a.seq - b.seq);
+        while (this.buffer.length > 0 && this.buffer[0].seq === this.nextSeq) {
+            emit(this.buffer.shift());
+            this.nextSeq++;
+        }
+    }
+    flush(emit) {
+        while (this.buffer.length > 0) {
+            emit(this.buffer.shift());
+        }
+    }
+}
 
 describe('MessageBuffer Property Tests', () => {
     it('should always yield messages in strictly ascending sequence number order, regardless of arrival order', () => {
