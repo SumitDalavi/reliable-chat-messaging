@@ -1,14 +1,14 @@
 > **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
 
-
 # Reliable Chat Messaging 💬
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/reliable-chat-messaging?color=blue&logo=github)](https://github.com/SumitDalavi/reliable-chat-messaging/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/reliable-chat-messaging/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/reliable-chat-messaging/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/reliable-chat-messaging?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/reliable-chat-messaging/releases)
 [![Release Workflow](https://github.com/SumitDalavi/reliable-chat-messaging/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/reliable-chat-messaging/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/reliable-chat-messaging/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/reliable-chat-messaging?color=blue&logo=github)](https://github.com/SumitDalavi/reliable-chat-messaging/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/reliable-chat-messaging/releases)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/reliable-chat-messaging/pkgs/container/reliable-chat-messaging)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/reliable-chat-messaging/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > Scalable chat platform guaranteeing message delivery and ordering using Redis Streams.
 
@@ -80,7 +80,6 @@ curl -X POST http://localhost:8080/api/trigger -H "Content-Type: application/jso
 
 ---
 *Built with a focus on robust patterns, not toy demos.*
-
 
 ---
 
