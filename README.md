@@ -11,14 +11,10 @@
 > Scalable chat platform guaranteeing message delivery and ordering using Redis Streams.
 
 ## The Problem
-## Problem Statement
-Standard messaging protocols lose messages when clients briefly disconnect, destroying chat history integrity.
+Standard real-time messaging protocols drop messages when mobile or web clients experience transient network disconnects, breaking conversation history and delivery ordering.
 
 ## Architecture & Solution
-Guarantees ordered delivery by utilizing monotonic sequence IDs (seq_id) and explicit consumer offset tracking in SQLite. Simple CRUD applications fail when subjected to high throughput, race conditions, or massive data sets.
-
-## The Solution
-This project implements a robust microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
+This platform guarantees strictly ordered, at-least-once message delivery by assigning monotonic sequence IDs and tracking consumer offsets, allowing clients to cleanly resume streams without missing messages.
 
 ```text
 ┌──────────────┐      ┌───────────────┐      ┌───────────────┐
